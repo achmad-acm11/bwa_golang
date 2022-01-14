@@ -1,0 +1,45 @@
+{{ define "content" }}
+<!-- Page Heading -->
+<a href="/admin_project/input" class="btn btn-primary">Tambah Project</a>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4 mt-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Name</th>
+                        <th>Deskripsi</th>
+                        <th>Short Deskripsi</th>
+                        <th>Goal Amount</th>
+                        <th>Current Amount</th>
+                        <th>Backer Amount</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .projects }}
+                    <tr>
+                        <td>{{ .User.Name }}</td>
+                        <td>{{ .Project_name }}</td>
+                        <td>{{ .Description }}</td>
+                        <td>{{ .Short_description }}</td>
+                        <td>{{ .Goal_amount }}</td>
+                        <td>{{ .Current_amount }}</td>
+                        <td>{{ .Backer_count }}</td>
+                        <td>{{ if .Images }} <img class="img-profile rounded-circle" src="{{ (index .Images 0).Image }}" width="60" height="60"> {{ end }}</td>
+                        <td><a href="/admin_project/edit/{{ .Id }}" class="btn btn-warning">Edit</a><a href="/admin_user/delete/{{ .Id }}" onclick="return confirm('Are you sure to delete this ?')" class="btn btn-danger">Delete</a><a href="/admin_project/image/{{ .Id }}" class="btn btn-primary">Image</a><a href="/admin_project/show/{{ .Id }}" class="btn btn-primary">Detail</a></td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{ end }}

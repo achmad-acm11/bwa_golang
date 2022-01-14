@@ -1,0 +1,43 @@
+{{ define "content" }}
+{{ if .Error }}
+<div class="alert alert-danger" role="alert">
+    {{ .Error }}
+</div>
+{{end}}
+<form action="/admin_project" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>User</label>
+        <select name="user_id" id="" class="form-control">
+            <option value="">Pilih User</option>
+            {{ range .Users}}
+                {{ if eq .Id $.UserId}}
+                <option value="{{ .Id }}" selected>{{ .Name }}</option>
+                {{ else }}
+                <option value="{{ .Id }}">{{ .Name }}</option>
+                {{ end }}
+            {{ end }}
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" value="{{ .Project_name }}">
+    </div>
+    <div class="form-group">
+        <label>Short Description</label>
+        <input type="short_description" class="form-control" name="short_description" value="{{ .Short_description }}">
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" cols="30" rows="10" name="description">{{ .Description }}</textarea>
+    </div>
+    <div class="form-group">
+        <label>Goal Amount</label>
+        <input type="number" class="form-control" name="goal_amount" value="{{ .Goal_amount }}">
+    </div>
+    <div class="form-group">
+        <label>Perks</label>
+        <input type="text" class="form-control" name="perks" value="{{ .Perks }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{ end }}

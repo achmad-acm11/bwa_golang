@@ -1,0 +1,37 @@
+{{ define "content" }}
+<!-- Page Heading -->
+<a href="/admin_user/input" class="btn btn-primary">Tambah User</a>
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4 mt-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Profession</th>
+                        <th>Photo</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .users }}
+                    <tr>
+                        <td>{{ .Name }}</td>
+                        <td>{{ .Email }}</td>
+                        <td>{{ .Profession }}</td>
+                        <td><img class="img-profile rounded-circle" src="{{ .Image }}" width="60" height="60"></td>
+                        <td><a href="/admin_user/edit/{{ .Id }}" class="btn btn-warning">Edit</a><a href="/admin_user/delete/{{ .Id }}" onclick="return confirm('Are you sure to delete this ?')" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,36 @@
+{{ define "content" }}
+<!-- Page Heading -->
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4 mt-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Name</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Image</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range .transactions }}
+                    <tr>
+                        <td>{{ .User.Name }}</td>
+                        <td>{{ .Project.Project_name }}</td>
+                        <td>{{ .Amount }}</td>
+                        <td>{{ .Status }}</td>
+                        <td>{{ if .Project.Images }} <img class="img-profile rounded-circle" src="{{ (index .Project.Images 0).Image }}" width="60" height="60"> {{ end }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{{ end }}

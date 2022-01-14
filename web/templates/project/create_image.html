@@ -1,0 +1,17 @@
+{{ define "content" }}
+{{ if .Error }}
+<div class="alert alert-danger" role="alert">
+    {{ .Error }}
+</div>
+{{end}}
+<form action="/admin_project/image/{{ .id }}" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>Photo</label>
+        <div class="custom-file">
+            <input type="file" name="image" class="custom-file-input">
+            <label class="custom-file-label">Choose file...</label>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{ end }}

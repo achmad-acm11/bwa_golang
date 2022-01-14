@@ -1,0 +1,26 @@
+{{ define "content" }}
+<form action="/admin_project/edit/{{ .Id}}" method="post" enctype="multipart/form-data">
+    <input type="hidden" value="{{ .Id}}" name="user_id">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" value="{{ .Project_name }}">
+    </div>
+    <div class="form-group">
+        <label>Short Description</label>
+        <input type="short_description" class="form-control" name="short_description" value="{{ .Short_description }}">
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" cols="30" rows="10" name="description">{{ .Description }}</textarea>
+    </div>
+    <div class="form-group">
+        <label>Goal Amount</label>
+        <input type="number" class="form-control" name="goal_amount" value="{{ .Goal_amount }}">
+    </div>
+    <div class="form-group">
+        <label>Perks</label>
+        <input type="text" class="form-control" name="perks" value="{{ .Perks }}">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{{ end }}

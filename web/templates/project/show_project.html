@@ -1,0 +1,46 @@
+{{ define "content" }}
+<form action="#" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+        <label>User Name</label>
+        <input type="text" class="form-control" name="name" value="{{ .User.Name }}">
+    </div>
+    <div class="form-group">
+        <label>Project Name</label>
+        <input type="text" class="form-control" name="name" value="{{ .Project_name }}">
+    </div>
+    <div class="form-group">
+        <label>Short Description</label>
+        <input type="short_description" class="form-control" name="short_description" value="{{ .Short_description }}">
+    </div>
+    <div class="form-group">
+        <label>Description</label>
+        <textarea class="form-control" cols="30" rows="10" name="description">{{ .Description }}</textarea>
+    </div>
+    <div class="form-group">
+        <label>Goal Amount</label>
+        <input type="number" class="form-control" name="goal_amount" value="{{ .Goal_amount }}">
+    </div>
+    <div class="form-group">
+        <label>Current Amount</label>
+        <input type="number" class="form-control" name="current_amount" value="{{ .Current_amount }}">
+    </div>
+    <div class="form-group">
+        <label>Backer Count</label>
+        <input type="number" class="form-control" name="backer_count" value="{{ .Backer_count }}">
+    </div>
+    <div class="form-group">
+        <label>Perks</label>
+        <input type="text" class="form-control" name="perks" value="{{ .Perks }}">
+    </div>
+    <div class="form-group">
+        <label>Images</label>
+        <div class="row">
+            {{ range .Images}}
+            <div class="col-ld-2">
+                <img class="img-profile rounded-circle" src="/{{ .Image }}" width="60" height="60">
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</form>
+{{ end }}
